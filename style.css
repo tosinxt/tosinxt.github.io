@@ -1,0 +1,482 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+  background: #4a2667;
+}
+
+.audio {
+  display: none;
+}
+
+.hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hearts,
+.front,
+.back {
+  overflow: hidden;
+}
+
+.hearts .heart,
+.front .heart,
+.back .heart {
+  pointer-events: none;
+  width: 15px;
+  height: 15px;
+  background: url(heart.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  -webkit-animation: animate 5s linear infinite;
+          animation: animate 5s linear infinite;
+}
+
+.flip-card {
+  width: 90%;
+  height: 390px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+
+.flip-card .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: -webkit-transform 0.8s;
+  transition: -webkit-transform 0.8s;
+  transition: transform 0.8s;
+  transition: transform 0.8s, -webkit-transform 0.8s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-box-shadow: 0 30px 50px -20px #2e0642;
+          box-shadow: 0 30px 50px -20px #2e0642;
+}
+
+.flip-card.active .flip-card-inner {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.flip-card .front,
+.flip-card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #aa3bb1, #582a7e);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.flip-card .front .flip-button,
+.flip-card .back .flip-button {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  opacity: 0;
+  -webkit-animation: show 0.5s linear forwards;
+          animation: show 0.5s linear forwards;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+
+.flip-card .front .flip-button svg,
+.flip-card .back .flip-button svg {
+  fill: #f6bdfa;
+}
+
+.flip-card .back {
+  color: #f6bdfa;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 20px;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.hearts-broken .heart {
+  width: 20px;
+  height: 20px;
+  background: url(broken-heart.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@-webkit-keyframes animate {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: translateY(-2150%) rotate(360deg);
+            transform: translateY(-2150%) rotate(360deg);
+  }
+  100% {
+    -webkit-transform: translateY(-4300%) rotate(0deg);
+            transform: translateY(-4300%) rotate(0deg);
+  }
+}
+
+@keyframes animate {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: translateY(-2150%) rotate(360deg);
+            transform: translateY(-2150%) rotate(360deg);
+  }
+  100% {
+    -webkit-transform: translateY(-4300%) rotate(0deg);
+            transform: translateY(-4300%) rotate(0deg);
+  }
+}
+
+.options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.options label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+  opacity: 0;
+  -webkit-animation: show 0.5s linear forwards;
+          animation: show 0.5s linear forwards;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+
+.options label:nth-child(2) {
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+
+.options label:nth-child(2) input:checked::before {
+  background: url(broken-heart.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.options label input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  border-radius: 5px;
+  border: 5px solid #f6bdfa;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.options label input:checked::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  background: url(heart.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.options label h3 {
+  color: #f6bdfa;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.intro {
+  max-width: 325px;
+}
+
+.intro .text {
+  display: none;
+}
+
+.intro.go .text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.intro.go .text.text-stroke {
+  fill: none;
+  stroke: #51256f;
+  stroke-width: 2.8px;
+  stroke-dashoffset: -900;
+  stroke-dasharray: 900;
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+  -webkit-animation: dash 2.5s ease-in-out forwards;
+          animation: dash 2.5s ease-in-out forwards;
+}
+
+.intro.go .text.text-stroke:nth-child(2) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.intro.go .text.text-stroke:nth-child(3) {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+
+.intro.go .text.text-stroke-2 {
+  stroke: #f6bdfa;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+
+.intro.go .text.text-stroke-2:nth-child(5) {
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+.intro.go .text.text-stroke-2:nth-child(6) {
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+
+@-webkit-keyframes dash {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.answers {
+  z-index: 10;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #4a2667;
+}
+
+.answers .answer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.answers .answer .icon {
+  z-index: 10;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 10px;
+  -webkit-filter: drop-shadow(5px 5px 8px #350e4c);
+          filter: drop-shadow(5px 5px 8px #350e4c);
+}
+
+.answers .answer h3 {
+  z-index: 10;
+  color: #fff;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+}
+
+.answers .answer.si .icon {
+  -webkit-filter: drop-shadow(5px 5px 8px #350e4c) saturate(3);
+          filter: drop-shadow(5px 5px 8px #350e4c) saturate(3);
+  -webkit-animation: latido 1.5s linear infinite;
+          animation: latido 1.5s linear infinite;
+}
+
+.answers .answer.si h3 {
+  font-size: 23px;
+}
+
+.answers .close {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: #fff;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 8px 12px;
+  text-transform: uppercase;
+  z-index: 10;
+  cursor: pointer;
+  -webkit-box-shadow: 0 6px 7px #350e4c;
+          box-shadow: 0 6px 7px #350e4c;
+}
+
+.answers .close:hover {
+  -webkit-box-shadow: 0 4px 4px #350e4c;
+          box-shadow: 0 4px 4px #350e4c;
+}
+
+.answers .close:active {
+  -webkit-box-shadow: 0 1px 2px #244b94;
+          box-shadow: 0 1px 2px #244b94;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.answers .close svg {
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+  width: 16px;
+  height: 16px;
+  fill: #444;
+}
+
+@-webkit-keyframes latido {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes latido {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+img[alt="www.000webhost.com"] {
+  display: none;
+}
+
+@media (min-width: 360px) {
+  .flip-card {
+    width: 325px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
